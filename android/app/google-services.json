@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "253004948138",
+    "project_id": "rl-express-partner",
+    "storage_bucket": "rl-express-partner.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253004948138:android:ca960e425cc10624a2e6d3",
+        "android_client_info": {
+          "package_name": "cm.rlexpress.rl_express_partner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTyqqR2gVtJXwFWw99UnwjBqUihg8W-zA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

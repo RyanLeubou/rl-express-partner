@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="RL EXPRESS — Livraison urbaine express">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="RL EXPRESS">
+  <meta name="msapplication-TileColor" content="#0A1628">
+  <meta name="theme-color" content="#0A1628">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RL EXPRESS 🔱</title>
+  <link rel="manifest" href="manifest.json">
+  <script src='https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css' rel='stylesheet' /> 
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #0A1628;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    #loading-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      animation: fadeIn 0.4s ease-in forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    #trident-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: rgba(201, 151, 12, 0.08);
+      border: 1.5px solid rgba(201, 151, 12, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+    }
+
+    #app-name {
+      color: #C9970C;
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: 5px;
+    }
+
+    #slogan {
+      color: rgba(255,255,255,0.35);
+      font-size: 12px;
+      font-style: italic;
+      letter-spacing: 0.5px;
+    }
+
+    #devise {
+      color: rgba(255,255,255,0.2);
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    #progress-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(to right, #0A1628, #C9970C, #0A1628);
+      animation: progress 2s ease-in-out infinite;
+    }
+
+    @keyframes progress {
+      0% { opacity: 0.3; }
+      50% { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
+
+    /* Cercles décoratifs */
+    .circle-top {
+      position: fixed;
+      top: -100px;
+      right: -100px;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background: rgba(201, 151, 12, 0.04);
+      pointer-events: none;
+    }
+
+    .circle-bottom {
+      position: fixed;
+      bottom: -120px;
+      left: -120px;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: rgba(27, 58, 107, 0.25);
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="circle-top"></div>
+  <div class="circle-bottom"></div>
+
+  <div id="loading-screen">
+    <div id="trident-circle">🔱</div>
+    <div id="app-name">RL EXPRESS</div>
+    <div id="slogan">La rapidité au service de vos besoins</div>
+    <div id="devise">Disponibilité · Rapidité · Fiabilité</div>
+  </div>
+
+  <div id="progress-bar"></div>
+
+  <script>
+    window.addEventListener('flutter-first-frame', function() {
+      // Masquer le splash HTML dès que Flutter est prêt
+      var loadingScreen = document.getElementById('loading-screen');
+      var progressBar = document.getElementById('progress-bar');
+      if (loadingScreen) {
+        loadingScreen.style.transition = 'opacity 0.3s ease';
+        loadingScreen.style.opacity = '0';
+        setTimeout(function() {
+          loadingScreen.style.display = 'none';
+        }, 300);
+      }
+      if (progressBar) {
+        progressBar.style.display = 'none';
+      }
+    });
+  </script>
+
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
